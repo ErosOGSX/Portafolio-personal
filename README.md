@@ -1,16 +1,108 @@
-# React + Vite
+# Portafolio Personal - ErosOGSX 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el repositorio de mi portafolio personal, un sitio web de página única (SPA) diseñado para mostrar mis habilidades, proyectos y experiencia como desarrollador. El objetivo es presentar mi trabajo de una manera limpia, moderna y accesible.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Características Principales
 
-## React Compiler
+Este portafolio está estructurado en varias secciones clave para una navegación intuitiva:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Hero Section:** Una bienvenida impactante con mi título profesional y un llamado a la acción.
+-   **Sobre Mí (About):** Una sección dedicada a contar mi historia, mis pasiones tecnológicas y mis habilidades blandas.
+-   **Galería de Proyectos:** Un espacio visual para mostrar mis trabajos más importantes, con enlaces a sus repositorios y demos en vivo.
+-   **Footer:** Incluye enlaces a mis redes profesionales como LinkedIn, GitHub y formas de contacto.
+-   **Diseño Totalmente Responsivo:** Perfecta visualización en dispositivos móviles, tabletas y ordenadores de escritorio.
 
-## Expanding the ESLint configuration
+## 🛠️ Stack Tecnológico
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Este proyecto fue construido utilizando tecnologías modernas del ecosistema de JavaScript para garantizar un rendimiento óptimo y una excelente experiencia de desarrollo.
+
+-   **Framework Principal:** React.js
+-   **Entorno de Desarrollo:** Vite
+-   **Lenguaje:** JavaScript (ES6+)
+-   **Estilos:** TailwindCSS (3.4.0)
+
+## Tecnologías Utilizadas
+- React
+- Vite
+- JavaScript (ES6+)
+- TailwindCSS
+- React router DOM
+- React hook form
+- Zustand
+- Yup
+- Framer Motion 
+
+## 🚀 Instalación y Desarrollo Local
+
+Si deseas clonar y ejecutar este proyecto en tu máquina local, sigue estos sencillos pasos:
+
+1.  **Clona el repositorio:**
+    ```bash
+    git clone https://github.com/ErosOGSX/Portafolio-personal.git
+    ```
+
+2.  **Navega a la carpeta del proyecto:**
+    ```bash
+    cd Portafolio-personal
+    ```
+
+3.  **Instala las dependencias:**
+    *(Se recomienda usar `npm` ya que el proyecto incluye un `package-lock.json`)*
+    ```bash
+    npm install
+    ```
+
+4.  **Ejecuta el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    La aplicación estará disponible en `http://localhost:5173` (o el puerto que indique Vite en tu terminal).
+
+## 📁 Estructura del Proyecto
+
+La estructura de carpetas está organizada para mantener el código modular, escalable y fácil de mantener.
+
+```
+Portafolio-personal/
+|
+|- public/
+|  |-- AC ICON.png
+|  |-- AC ICON.svg 
+|
+|- src/
+|  |- assets/
+|  |  |--
+|  |  |--
+|  |  |--
+|  |
+|  |- components/
+|  |  |  |-- AnimatedSection.jsx
+|  |  |  |-- ContactForm.jsx
+|  |  |  |-- Footer.jsx
+|  |     |-- Navbar.jsx
+|  |
+|  |- pages/
+|  |  |  |-- HomePage.jsx
+|  |
+|  |- store/
+|  |  |  |-- uiStore.jsx
+|  |
+|  |-- App.jsx         
+|  |-- main.jsx       
+|  |-- index.css
+|
+|-- .gitignore
+|-- eslint.config.js
+|-- index.html
+|-- package.json
+|-- pnpm-lock.yaml
+|-- pnpm-workspace.yaml
+|-- postcss.config.js
+|-- README.md
+|-- tailwind.config.js
+|-- vite.config.js
+```
+
+---
