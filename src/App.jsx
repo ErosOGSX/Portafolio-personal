@@ -1,8 +1,10 @@
 import React from 'react'
 
 // 1. IMPORTACIONES DE COMPONENTES Y DATOS
-import { Header } from './components/layout/header/Navbar';
-import { Footer } from './components/layout/footer/Footer';
+import Navbar from './components/layout/header/Navbar';
+import Hero from './components/hero/Hero';
+import About from './components/about/About';
+import Footer from './components/layout/footer/Footer';
 import AnimatedSection from './components/utils/AnimatedSection';
 import ContactForm from './components/contact/ContactForm';
 import Projects from './components/projects/Projects'
@@ -54,54 +56,20 @@ const skills = [
 
 function App() {
   return (
-
     <div className="bg-neutral-950 text-white">
       <div className="absolute inset-0 -z-10 h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       
-      <Header />
+      <Navbar />
 
       <main className="container mx-auto px-4">
-        
-        {/* Hero Section */}
-        <section className='flex min-h-[80dvh] flex-col items-center justify-center text-center'>
-            <h1 className='text-5xl font-black tracking-tight text-neutral-100 md:text-6xl lg:text-7xl'>
-                <span className='bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent'>Alex Cedillo</span>
-            </h1>
-            <p className='mt-4 text-lg text-sky-400 font-semibold sm:text-xl'>Desarrollador Web Front-End</p>
-            <p className='mt-6 max-w-2xl text-lg text-neutral-300'>Transformando ideas en experiencias digitales inolvidables, atractivas y funcionales.</p>
-            <a href="#projects" className='mt-8 inline-block rounded-md bg-sky-500 px-8 py-3 font-medium text-white transition-transform duration-300 hover:bg-sky-600 hover:scale-105'>Ver mis proyectos</a>
-        </section>
+      
 
-        {/* About Section */}
-        <AnimatedSection id="about">
-             <h2 className="text-3xl font-bold text-center text-neutral-100 sm:text-4xl">Sobre mí</h2>
-            <p className='mt-4 text-lg text-neutral-300 max-w-3xl mx-auto text-center leading-relaxed'>¡Hola! Soy Alex Cedillo, un apasionado desarrollador web front-end. Me especializo en transformar ideas en experiencias digitales inolvidables, utilizando tecnologías modernas como React y Next.js. Mi objetivo es diseñar interfaces de usuario intuitivas que no solo sean visualmente atractivas, sino también funcionales y accesibles.</p>
-        </AnimatedSection>
+        <Hero />
+
+        <About />
 
         {/* Projects Section */}
-        <AnimatedSection id="projects">
-            <h2 className="text-3xl font-bold text-center text-neutral-100 sm:text-4xl">Proyectos</h2>
-            <div className='mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
-                {projects.map((project, index) => (
-                    <div key={index} className="group relative flex flex-col overflow-hidden rounded-lg bg-neutral-900 border border-neutral-800 shadow-lg transition-all duration-300 hover:shadow-sky-400/20 hover:-translate-y-2">
-                        <img src={project.image} alt={project.title} className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"/>
-                        <div className="p-6 flex flex-col flex-grow">
-                            <h3 className="text-xl font-bold text-neutral-100">{project.title}</h3>
-                            <p className="mt-2 text-neutral-400 flex-grow">{project.description}</p>
-                            <div className="mt-4 flex flex-wrap gap-2">
-                                {project.tags.map(tag => (
-                                <span key={tag} className="rounded-full bg-neutral-800 px-3 py-1 text-xs font-medium text-sky-400">{tag}</span>
-                                ))}
-                            </div>
-                            <div className="mt-6 flex items-center justify-between">
-                                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:underline">Ver en vivo</a>
-                                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-sky-400"><FaGithub size={24} /></a>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </AnimatedSection>
+        <Projects projects={projects} />
 
         {/* Skills Section */}
         <AnimatedSection id="skills">
@@ -125,7 +93,6 @@ function App() {
             <p className='mt-6 max-w-2xl mx-auto text-center text-lg text-neutral-300'>¿Interesado en colaborar o tienes alguna pregunta? Rellena el formulario de abajo.</p>
             <ContactForm />
         </AnimatedSection>
-
       </main>
 
       <Footer />
