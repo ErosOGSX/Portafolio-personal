@@ -41,7 +41,7 @@ Este es el repositorio de mi portafolio personal, una Single Page Application (S
 
 La estructura del proyecto está diseñada para ser intuitiva y escalable, separando claramente las responsabilidades.
 
-```
+```plaintext
 Portafolio-Alex/
 ├── .vscode/
 ├── node_modules/         # Dependencias del proyecto (instaladas por npm)

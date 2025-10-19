@@ -5,7 +5,7 @@ import pluginReactJsxRuntime from "eslint-plugin-react/configs/jsx-runtime.js";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 
 export default [
-  { files: ["**/*.{js,mjs,cjs,jsx}"] }, 
+  { files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"] }, 
   { languageOptions: { 
       parserOptions: { 
         ecmaFeatures: { jsx: true } 
