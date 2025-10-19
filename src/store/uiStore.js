@@ -1,21 +1,53 @@
-// import { create } from 'zustand';
-// import { persist } from 'zustand/middleware';
+import { create } from 'zustand';
 
-// const useUiStore = create(
-//     persist(
-//         (set) => ({
-//             theme: 'light',
-//             isMenuOpen: false,
-//             toggleTheme: () => set((state) => ({ theme: state.theme === 'light' ? 'dark' : 'light'})),
-//             toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen})),
-//             closeMenu : () => set({ isMenuOpen: false}),
-//         }),
+const useUiStore = create((set, get) => ({
+    isModalOpen: false,
+    modalType: null,
+    modalData: null,
 
-//         { 
-//             name: 'ui-storage', 
-//             partialize: (state) => ({ theme: state.theme}),
-//         }
-//     )
-// )
+    openModal: (type, data = null) => set({
+        isModalOpen: true,
+        modalType: type,
+        modalData: data,
+    }),
 
-// export default useUiStore;
+    closeModal: () => set({
+        isModalOpen: false,
+        modalType: null,
+        modalData: null,
+    }),
+
+    activeSection: null,
+    setActiveSection: (sectionId) => set({ activeSection: sectionId }),
+
+    notification: {
+        message: '',
+        type: 'success',
+        isVisible: false,
+    },
+
+    showNotification: (notificationData) => {
+        set({
+            notification: {
+                ...notificationData,
+                isVisible: true,
+            }
+        })
+
+        setTimeout(() => {
+            get().hideNotification()
+        }, 3000)
+    },
+
+    hideNotification: () => set({
+        notification: {
+        message: '',
+        type: 'success',
+        isVisible: false,
+        }
+    })
+
+}))
+
+export default useUiStore
+

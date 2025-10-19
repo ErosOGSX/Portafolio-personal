@@ -1,21 +1,17 @@
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
-import { useState } from 'react'
-
-    //? VALIDAMOS CON YUP
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import useUiStore from '../../store/uiStore';
 
 const validationSchema = yup.object({
     name: yup.string().required('El nombre es obligatorio'),
     email: yup.string().email('El correo no es válido').required('El correo es obligatorio'),
     message: yup.string().required('El mensaje es obligatorio').min(10, 'El mensaje debe tener al menos 10 caracteres'),
 }).required();
-
+ 
 const ContactForm = () => {
-    //? ESTADOS PARA MANEJAR EL EXITO O ERROR AL ENVIAR EL FORM
-    const [submissionStatus, setSubmissionStatus] = useState(null);
+    const showNotification = useUiStore((state) => state.showNotification);
 
-    //? INICIALIZAMOS REACT-HOOK-FORM
     const {
         register,
         handleSubmit,
@@ -25,15 +21,8 @@ const ContactForm = () => {
         resolver: yupResolver(validationSchema),
     });
 
-    //? FUNCION PARA EL ENVIO DEL FORM
     const onSubmit = async (data) => {
-        setSubmissionStatus(null);
-
         try {
-            // SIMULAMOS EL ENVIO DEL FORM
-            // await new Promise(resolve => setTimeout(resolve, 2000));
-
-            //? AQUI LA LOGICA DE ENVIO CON FETCH
             const response = await fetch('https://formspree.io/f/mpwyynga', {
                 method: 'POST',
                 headers: {
@@ -43,14 +32,20 @@ const ContactForm = () => {
             });
 
             if (response.ok) {
-                setSubmissionStatus('success');
+                showNotification({
+                    message: '¡Mensaje enviado con éxito!',
+                    type: 'success'
+                });
                 reset();
             } else {
                 throw new Error('Hubo un problema al enviar el mensaje');
             }
         } catch (error) {
             console.error('Error de envío:', error);
-            setSubmissionStatus('error');
+            showNotification({
+                message: 'Hubo un problema al enviar. Inténtalo de nuevo.',
+                type: 'error'
+            });
         }
     };
 
@@ -80,17 +75,13 @@ const ContactForm = () => {
                 </div>
 
                 <div className='mt-8 text-center'>
-                    <button type='submit' disabled={isSubmitting} className='inline-block w-full sm:w-auto rounded-md bg-sky-500 px-12 py-3 text-lg font-medium text-white transition-all duration-300 hover:bg-sky-600 hover:scale-105 disabled:bg-neutral-600 disabled:cursor-not-allowed disabled:scale-100'>{isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}</button>
+                    <button type='submit' disabled={isSubmitting} className='inline-block w-full sm:w-auto rounded-md bg-sky-500 px-12 py-3 text-lg font-medium text-white transition-all duration-300 hover:bg-sky-600 hover:scale-105 disabled:bg-neutral-600 disabled:cursor-not-allowed disabled:scale-100'>
+                        {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                    </button>
                 </div>
             </form>
-
-            {/* MENSAJES DEL ESTADO DEL ENVIO (EXITO O ERROR) */}
-            {submissionStatus === 'success' && (<p className='mt-4 text-center text-green-400'>¡Mensaje enviado con éxito! Gracias por contactarme.</p>
-            )}
-            {submissionStatus === 'error' && (<p className='mt-4 text-center text-green-400'>Lo siento, hubo un problema. Por favor, inténtalo de nuevo o envíame un correo directamente.</p>)}
         </div>
     );
 }
 
-export default ContactForm
-
+export default ContactForm;
