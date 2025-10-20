@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 
 const Hero = forwardRef(function Hero(props, ref) {
   return (
-    <section className='flex min-h-[80dvh] flex-col items-center justify-center text-center' ref={ref}>
+    <section ref={ref} id="hero" className='flex min-h-[80dvh] flex-col items-center justify-center text-center'>
         <h1 className='text-5xl font-black tracking-tight text-neutral-100 md:text-6xl lg:text-7xl'>
             <span className='bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent'>Alex Cedillo</span>
         </h1>

@@ -81,6 +81,10 @@ Portafolio-Alex/
 │   │   └── utils/        # Componentes de utilidad o helpers
 │   │       └── AnimatedSection.jsx
 │   │
+│   ├── datas/            # NUEVA CARPETA: Archivos de datos estáticos de la aplicación
+│   │   ├── Projects-data.js
+│   │   └── Skills-data.js
+│   │
 │   ├── store/            # Estado global de la aplicación
 │   │   └── uiStore.js
 │   │
@@ -110,6 +114,15 @@ Este proyecto ha pasado por una refactorización arquitectónica clave para mejo
 
 3.  **Componentes Reutilizables (ej. `ProjectCard`):** En lugar de definir la estructura de una tarjeta de proyecto múltiples veces, se creó un componente `ProjectCard.jsx`.
     -   **Justificación:** Sigue el principio **DRY (Don't Repeat Yourself)**. Para modificar el estilo de todas las tarjetas, solo se necesita editar un archivo, garantizando consistencia y ahorrando tiempo.
+
+4. **Centralización del Layout en `App.jsx`:** Se eliminó un componente `HomePage` intermedio para que `App.jsx` actúe como el único "índice" de la aplicación.
+    -   **Justificación:**  Simplifica la estructura para una SPA. 
+
+5. **Modularización de Componentes:** Cada sección (`Hero`, `About`, `Projects`, etc.) fue extraída a su propio componente.
+    -   **Justificación:** Para aislar su lógica y facilitar el mantenimiento (Principio de Responsabilidad Única).
+
+6. **Separación de Datos (`/data`):** Los arrays de proyectos y habilidades se movieron a su propia carpeta `data/`. 
+    -   **Justificación:** Esto desacopla los datos de la capa de presentación, haciendo `App.jsx` más limpio y permitiendo que la gestión de la información sea más segura y centralizada.
 
 ---
 
