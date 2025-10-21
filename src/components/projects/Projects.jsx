@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types'
 import AnimatedSection from '../utils/AnimatedSection'
 import ProjectsCards from './ProjectsCards'
-import useUiStore from '../../store/uiStore'
+import { useUiStore } from '../../store/uiStore'
 import { forwardRef } from 'react'
 
 const Projects = forwardRef(({ projectsToShow, allProjects }, ref) => {
     const openModal = useUiStore((state) => state.openModal)
     return(
         
-        <div ref={ref} id="projects">
-            <AnimatedSection>
+            <AnimatedSection ref={ref} id="projects">
 
                 <h2 className='text-3xl font-bold text-center text-neutral-100 sm:text-4xl'>Proyectos</h2>
 
@@ -24,7 +23,6 @@ const Projects = forwardRef(({ projectsToShow, allProjects }, ref) => {
                 </div>
 
             </AnimatedSection>
-        </div>
     )
 })
 

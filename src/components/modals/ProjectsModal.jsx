@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import ProjectsCards from '../projects/ProjectsCards'
 import { FaTimes } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'framer-motion'
-import useUiStore from "../../store/uiStore";
+import { useUiStore } from "../../store/uiStore";
 
 const ProjectsModal = () => {
     const {closeModal, modalData} = useUiStore();

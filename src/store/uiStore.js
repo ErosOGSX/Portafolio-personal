@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const useUiStore = create((set, get) => ({
+export const useUiStore = create((set, get) => ({
     isModalOpen: false,
     modalType: null,
     modalData: null,
@@ -49,5 +49,4 @@ const useUiStore = create((set, get) => ({
 
 }))
 
-export default useUiStore
 

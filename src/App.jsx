@@ -1,9 +1,8 @@
 import { useRef, useEffect } from 'react';
-import useUiStore from './store/uiStore';
+import { useUiStore } from './store/uiStore';
 
 //? IMPORTACIONES DE DATOS
 import allProjects from './datas/Projects-data';
-import skills from './datas/Skills-data';
 
 //? IMPORTACIONES DE COMPONENTES
 import Navbar from './components/layout/header/Navbar';
@@ -14,7 +13,8 @@ import Footer from './components/layout/footer/Footer';
 import AnimatedSection from './components/utils/AnimatedSection';
 import ContactForm from './components/contact/ContactForm';
 import ProjectsModal from './components/modals/ProjectsModal';
-import NotificationToast from './components/utils/NotificationToast'
+import { NotificationToast } from './components/utils/NotificationToast'
+import Skills from './components/skills/Skills';
 
 
 function App() {
@@ -86,32 +86,19 @@ function App() {
         
         {/* SKILLS SECTION */}
 
-        <div ref={skillsRef} id="skills">
-          <AnimatedSection>
-              <h2 className="text-3xl font-bold text-center text-neutral-100 sm:text-4xl">Habilidades</h2>
-              <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
-                  {skills.map((skill) => {
-                      const { IconComponent } = skill;
-                      return (
-                          <div key={skill.name} className="flex flex-col items-center justify-center gap-4 rounded-lg bg-neutral-900 p-6 border border-neutral-800 transition-colors duration-300 hover:border-sky-400/50 hover:bg-neutral-800/60">
-                              <div className="text-sky-400"><IconComponent size={40} /></div>
-                              <p className="font-semibold text-neutral-300">{skill.name}</p>
-                          </div>
-                      );
-                  })}
-              </div>
-          </AnimatedSection>
-        </div>
+          <div ref={skillsRef}>
+            <Skills />
+          </div>
         
           {/* CONTACT SECTION */}
 
-        <div ref={contactRef} id="contact">
-          <AnimatedSection>
+
+          <AnimatedSection ref={contactRef} id="contact">
               <h2 className='text-3xl font-bold text-center text-neutral-100 sm:text-4xl'>Contacto</h2>
               <p className='mt-6 max-w-2xl mx-auto text-center text-lg text-neutral-300'>¿Interesado en colaborar o tienes alguna pregunta? Rellena el formulario de abajo.</p>
               <ContactForm />
           </AnimatedSection>
-        </div>
+
       </main>
 
 
@@ -130,5 +117,4 @@ function App() {
 }
 
 export default App
-
-
+ 

@@ -8,12 +8,14 @@ Este es el repositorio de mi portafolio personal, una Single Page Application (S
 
 ## ✨ Características Principales
 
--   **Diseño Moderno y Minimalista:** Interfaz limpia con un tema oscuro y acentos de color vibrantes para una experiencia visual agradable.
--   **Arquitectura Basada en Componentes:** Construido con una filosofía modular que favorece la mantenibilidad y escalabilidad.
--   **Animaciones Sutiles:** Uso de `Framer Motion` para animar la aparición de secciones al hacer scroll, mejorando la experiencia de usuario.
--   **Modal Interactivo de Proyectos:** Una galería completa de proyectos se muestra en un modal con filtros, evitando saturar la página principal. *(Funcionalidad en desarrollo)*
--   **Estado Global Centralizado:** Gestión eficiente de la UI a través de Zustand para funcionalidades complejas como el gestor de modales.
--   **Totalmente Responsivo:** Adaptado para una visualización perfecta en dispositivos móviles, tabletas y ordenadores de escritorio.
+-   **Diseño Moderno y Minimalista:** Interfaz limpia con un tema oscuro y acentos de color vibrantes.
+-   **Arquitectura Modular y Escalable:** El código está organizado por funcionalidad, separando la UI (componentes), la lógica de estado (store) y los datos.
+-   **Scrollspy Dinámico:** El enlace de navegación en el `Header` se resalta automáticamente para indicar la sección visible en la pantalla, implementado eficientemente con `IntersectionObserver`.
+-   **Efecto "Reveal Highlight" en Habilidades:** Inspirado en el Fluent Design de Microsoft, un halo de luz sigue al cursor del usuario, iluminando las tarjetas de habilidades para una interacción visualmente atractiva y moderna.
+-   **Modal Interactivo de Proyectos:** Una galería completa de proyectos se muestra en un modal con filtros por tecnología para una exploración detallada.
+-   **Sistema de Notificaciones (Toasts):** Feedback instantáneo al usuario tras enviar el formulario de contacto, mejorando la UX.
+-   **Animaciones Sutiles:** Uso de `Framer Motion` para animar la aparición de secciones al hacer scroll.
+-   **Totalmente Responsivo:** Adaptado para una visualización perfecta en todos los dispositivos.
 
 ## 🛠️ Stack Tecnológico
 
@@ -123,6 +125,18 @@ Este proyecto ha pasado por una refactorización arquitectónica clave para mejo
 
 6. **Separación de Datos (`/data`):** Los arrays de proyectos y habilidades se movieron a su propia carpeta `data/`. 
     -   **Justificación:** Esto desacopla los datos de la capa de presentación, haciendo `App.jsx` más limpio y permitiendo que la gestión de la información sea más segura y centralizada.
+
+---
+
+## NotificationToast
+
+**Aún no funciona al 100%,** *la notificación de envío del contactform falla por la propiedad isVisble dentro de notification al resultar en indefinida en la linea 7 u 8 (sigo buscando como solucionarlo) por ahora está desactivada con:*
+
+```
+if (!notification)
+    return null;
+```
+*Para evitar su desestructuración y que el portfolio no se visualice en su totalidad*
 
 ---
 

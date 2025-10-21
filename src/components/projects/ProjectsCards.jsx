@@ -1,5 +1,7 @@
-import React from 'react'
 import { FaGithub } from 'react-icons/fa'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
+import PropTypes from 'prop-types'
 
 const ProjectsCards = ({ project }) => {
     const { image, title, description, tags, liveUrl, githubUrl} = project
@@ -7,9 +9,10 @@ const ProjectsCards = ({ project }) => {
     return (
         <div className='group relative flex flex-col overflow-hidden rounded-lg bg-neutral-900 border border-neutral-800 shadow-lg transition-all duration-300 hover:shadow-sky-400/20 hover:-translate-y-2'>
 
-            <img src={image}
+            <LazyLoadImage src={image}
             alt={title}
-            className='h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105' />
+            effect='blur'
+            className='h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105' height={192} width={400} />
             
             <div className='p-6 flex flex-col flox-grow'>
                 
@@ -30,6 +33,16 @@ const ProjectsCards = ({ project }) => {
 
         </div>
     )
+}
+ProjectsCards.propTypes = {
+    project: PropTypes.shape({
+        image: PropTypes.string,
+        title: PropTypes.string,
+        description: PropTypes.string,
+        tags: PropTypes.arrayOf(PropTypes.string),
+        liveUrl: PropTypes.string,
+        githubUrl: PropTypes.string,
+    }).isRequired,
 }
 
 export default ProjectsCards

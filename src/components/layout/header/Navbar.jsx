@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
-import useUiStore  from '../../../store/uiStore';
+import { useUiStore }  from '../../../store/uiStore'
 
 const Navbar = () => {
     const activeSection = useUiStore((state) => state.activeSection);
