@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { useUiStore }  from '../../../store/uiStore'
+import AnimatedLogo from '../../utils/AnimatedLogo';
 
 const Navbar = () => {
     const activeSection = useUiStore((state) => state.activeSection);
@@ -22,7 +23,9 @@ const Navbar = () => {
     return (
         <header className='sticky top-0 z-50 bg-neutral-950/50 backdrop-blur-lg'>
             <nav className='container mx-auto flex max-w-5xl items-center justify-between px-6 py-4'>
-                <a href="#hero" className='text-2xl font-bold text-sky-400'>AC</a>
+                <a href="#hero">
+                    <AnimatedLogo />
+                </a>
 
                 {/* Navegación para pantallas grandes (Desktop) */}
                 <div className='hidden md:flex items-center space-x-8'>

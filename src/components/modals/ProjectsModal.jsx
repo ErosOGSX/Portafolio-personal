@@ -15,10 +15,12 @@ const ProjectsModal = () => {
             }
         }
 
+        document.addEventListener('keydown', handleKeyDown);
+
         return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [closeModal]);
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [closeModal]);
 
     const allProjects = modalData;
     if (!allProjects) {return null}

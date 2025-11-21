@@ -15,6 +15,7 @@ import ContactForm from './components/contact/ContactForm';
 import ProjectsModal from './components/modals/ProjectsModal';
 import { NotificationToast } from './components/utils/NotificationToast'
 import Skills from './components/skills/Skills';
+import InteractiveParticles from './components/utils/InteractiveParticles';
 
 
 function App() {
@@ -70,7 +71,8 @@ function App() {
 
 
   return (
-    <div className="bg-neutral-950 text-white">
+    <div className="bg-neutral-950 text-white relative">
+      <InteractiveParticles />
       <div className="absolute inset-0 -z-10 h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
       
       {/* NAVBAR SECTION */}
@@ -86,7 +88,7 @@ function App() {
         
         {/* SKILLS SECTION */}
 
-          <div ref={skillsRef}>
+          <div ref={skillsRef} id="skills">
             <Skills />
           </div>
         

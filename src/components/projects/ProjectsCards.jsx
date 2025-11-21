@@ -1,6 +1,5 @@
 import { FaGithub } from 'react-icons/fa'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
-import 'react-lazy-load-image-component/src/effects/blur.css'
 import PropTypes from 'prop-types'
 
 const ProjectsCards = ({ project }) => {
@@ -14,7 +13,7 @@ const ProjectsCards = ({ project }) => {
             effect='blur'
             className='h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105' height={192} width={400} />
             
-            <div className='p-6 flex flex-col flox-grow'>
+            <div className='p-6 flex flex-col flex-grow'>
                 
                 <h3 className='text-xl font-bold text-neutral-100'> {title} </h3>
                 <p className='mt-2 text-neutral-400 flex-grow'> {description} </p>

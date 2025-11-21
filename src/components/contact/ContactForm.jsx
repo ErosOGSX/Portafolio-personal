@@ -59,15 +59,17 @@ const ContactForm = () => {
     };
 
     const SpinnerIcon = () => {
-        <svg className='animate-spin -ml-1 mr-3 h-5 w-5 text-white' xmlns='https://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'> 
-        <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4'></circle> 
-        <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path> 
-        </svg>
+        return (
+            <svg className='animate-spin -ml-1 mr-3 h-5 w-5 text-white' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'> 
+                <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4'></circle> 
+                <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path> 
+            </svg>
+        )
     }
 
     return (
 
-        <div className='w-full max-w 2xl mx-auto mt-12 p-8 bg-neutral-900 border border-l-neutral-800 rounded-xl shadow-2xl shadow-sky-500/10'>
+        <div className='w-full max-w-2xl mx-auto mt-12 p-8 bg-neutral-900 border border-neutral-800 rounded-xl shadow-2xl shadow-sky-500/10'>
 
             <form onSubmit={handleSubmit(onSubmit)} noValidate className='space-y-8'>
 
@@ -99,7 +101,7 @@ const ContactForm = () => {
 
                 <div className='relative'>
 
-                    <textarea id="message" rows='4' {...register('message')} className={`peer block w-full appearance-none rounded-md border bg-transparent px-12 py-3 text-base text-neutral-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500/50 ${errors.email ? 'border-red-500' : 'border-neutral-700'}`} placeholder=''></textarea>
+                    <textarea id="message" rows='4' {...register('message')} className={`peer block w-full appearance-none rounded-md border bg-transparent px-12 py-3 text-base text-neutral-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500/50 ${errors.message ? 'border-red-500' : 'border-neutral-700'}`} placeholder=''></textarea>
 
                     <label htmlFor="message" className='absolute top-3 left-12 origin-[0] -translate-y-7 scale-75 transform text-sm text-neutral-400 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-7 peer-focus:scale-75 peer-focus:text-sky-400'>Mensaje</label>
 
