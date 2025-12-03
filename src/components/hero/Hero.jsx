@@ -4,7 +4,7 @@ import { FaWhatsapp, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import MagneticButton from '../utils/MagneticButton';
 
 const Hero = forwardRef(function Hero(props, ref) {
-  // Typewriter para el nombre
+  // ! EFECTO TYPEWRITER PARA ESCRIBIR MI NOMBRE LETRA POR LETRA
   const fullName = 'Alex Cedillo';
   const [displayName, setDisplayName] = useState('');
   useEffect(() => {
@@ -17,10 +17,10 @@ const Hero = forwardRef(function Hero(props, ref) {
       }
     };
     type();
-    // Limpieza no necesaria porque el efecto es corto
+    // ? NO NECESITO CLEANUP AQUI PORQUE EL EFECTO ES MUY RAPIDO
   }, []);
 
-  // Contador animado
+  // TODO: CONTADOR QUE MUESTRA CUANTOS PROYECTOS HE COMPLETADO
   const [count, setCount] = useState(0);
   useEffect(() => {
     let start = 0;
@@ -75,7 +75,7 @@ const Hero = forwardRef(function Hero(props, ref) {
         Transformando ideas en experiencias digitales inolvidables, atractivas y funcionales.
       </motion.p>
 
-      {/* Botones de redes sociales */}
+      {/* ! MIS REDES SOCIALES CON ANIMACIONES EPICAS */}
       <motion.div
         className='mt-8 flex gap-4 justify-center flex-wrap'
         initial={{ opacity: 0, scale: 0.8 }}
@@ -126,7 +126,7 @@ const Hero = forwardRef(function Hero(props, ref) {
         </motion.a>
       </motion.div>
 
-      {/* Contador debajo de los botones sociales */}
+      {/* ? AQUI MUESTRO MIS ESTADISTICAS DE PROYECTOS */}
       <motion.div
         className='mt-8 text-2xl font-bold text-sky-400'
         initial={{ opacity: 0, y: 20 }}
@@ -136,7 +136,7 @@ const Hero = forwardRef(function Hero(props, ref) {
         <span>{count}+</span> <span className='text-sm text-neutral-400'>proyectos completados</span>
       </motion.div>
       
-      {/* Botón principal con efecto magnético */}
+      {/* ! BOTON MAGNETICO QUE SIGUE AL MOUSE - SUPER COOL! */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}

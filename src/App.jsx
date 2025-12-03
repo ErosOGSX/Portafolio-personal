@@ -2,10 +2,10 @@ import { useRef, useEffect, useState } from 'react';
 import TronLoader from './components/utils/TronLoader';
 import { useUiStore } from './store/uiStore';
 
-//? IMPORTACIONES DE DATOS
+// ! CARGANDO TODOS LOS PROYECTOS DESDE LA BASE DE DATOS
 import allProjects from './datas/Projects-data';
 
-//? IMPORTACIONES DE COMPONENTES
+// TODO: IMPORTAR TODOS LOS COMPONENTES NECESARIOS PARA EL PORTAFOLIO
 import Navbar from './components/layout/header/Navbar';
 import Hero from './components/hero/Hero';
 import About from './components/about/About';
@@ -14,6 +14,7 @@ import Footer from './components/layout/footer/Footer';
 import AnimatedSection from './components/utils/AnimatedSection';
 import ContactForm from './components/contact/ContactForm';
 import ProjectsModal from './components/modals/ProjectsModal';
+import VSCodeModal from './components/modals/VSCodeModal';
 import { NotificationToast } from './components/utils/NotificationToast'
 import Skills from './components/skills/Skills';
 import InteractiveParticles from './components/utils/InteractiveParticles';
@@ -31,7 +32,7 @@ function App() {
    const { isModalOpen, modalType, setActiveSection } = useUiStore();
    const projectsToShowOnPage = allProjects.slice(0, 3);
 
-   //? LAS REFES PARA EL INTERSECTIONOBSERVER
+   // ! REFERENCIAS PARA EL SCROLL SPY - DETECTA QUE SECCION ESTA VISIBLE
    const heroRef = useRef(null);
    const aboutRef = useRef(null);
    const projectsRef = useRef(null);
@@ -129,6 +130,7 @@ function App() {
           {/* FOOTER SECTION */}
           <Footer />
           {isModalOpen && modalType === 'projects' && <ProjectsModal />}
+          {isModalOpen && modalType === 'vscode' && <VSCodeModal />}
           {/* NOTIFICATION */}
           <NotificationToast />
         </div>

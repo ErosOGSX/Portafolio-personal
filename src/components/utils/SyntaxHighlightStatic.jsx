@@ -6,6 +6,7 @@ const SyntaxHighlightStatic = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [visibleChars, setVisibleChars] = useState(0);
 
+  // ! AQUI DEFINO TODO MI CODIGO CON COLORES PARA EL SYNTAX HIGHLIGHTING
   const codeLines = [
     { text: 'const', class: 'text-purple-400 font-bold' },
     { text: ' developer = {', class: 'text-sky-400' },
@@ -52,6 +53,7 @@ const SyntaxHighlightStatic = () => {
     return () => observer.disconnect();
   }, [hasAnimated]);
 
+  // TODO: FUNCION QUE HACE EL EFECTO TYPEWRITER LETRA POR LETRA
   const startTypewriter = () => {
     let currentChar = 0;
     const interval = setInterval(() => {
@@ -64,6 +66,7 @@ const SyntaxHighlightStatic = () => {
     }, 50);
   };
 
+  // ? ESTA FUNCION RENDERIZA EL CODIGO CON LOS COLORES CORRECTOS
   const renderCode = () => {
     let charCount = 0;
     return codeLines.map((line, index) => {

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import anime from 'animejs'
 import AnimatedSection from '../utils/AnimatedSection'
 
-//? DATOS DE LAS SKILLS
+// ! IMPORTANDO TODAS LAS HABILIDADES TECNICAS DESDE LA BASE DE DATOS
 import skills from '../../datas/Skills-data'
 
 const Skills = () => {
@@ -20,7 +20,7 @@ const Skills = () => {
     }
 
     useEffect(() => {
-        // Animación de entrada escalonada
+        // TODO: CREAR UNA ANIMACION PARA QUE LAS SKILLS APAREZCAN DE FORMA ESCALONADA
         anime({
             targets: skillsRef.current,
             scale: [0, 1],

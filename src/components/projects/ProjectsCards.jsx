@@ -1,9 +1,16 @@
-import { FaGithub } from 'react-icons/fa'
+import { FaGithub, FaCode } from 'react-icons/fa'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import PropTypes from 'prop-types'
+import { useUiStore } from '../../store/uiStore'
+import allProjects from '../../datas/Projects-data'
 
 const ProjectsCards = ({ project }) => {
     const { image, title, description, tags, liveUrl, githubUrl} = project
+    const openModal = useUiStore((state) => state.openModal)
+    
+    const handleCodeClick = () => {
+        openModal('vscode', allProjects)
+    }
 
     return (
         <div className='group card-tilt relative flex flex-col overflow-hidden rounded-lg bg-neutral-900/80 backdrop-blur-sm border border-neutral-800 shadow-lg transition-all duration-300 hover:shadow-sky-400/20 hover:-translate-y-2'>
@@ -25,7 +32,14 @@ const ProjectsCards = ({ project }) => {
 
                 <div className='mt-6 flex items-center justify-between'>
                     <a href={liveUrl} target='_blank' rel='noopener noreferrer' className='text-sky-400 hover:underline'>Ver en vivo</a>
-                    <a href={githubUrl} target='_blank' rel='noopener noreferrer' className='text-neutral-400 hover:text-sky-400'><FaGithub size={24} /></a>
+                    <div className='flex gap-3'>
+                        <button onClick={handleCodeClick} className='text-neutral-400 hover:text-sky-400 transition-colors'>
+                            <FaCode size={24} />
+                        </button>
+                        <a href={githubUrl} target='_blank' rel='noopener noreferrer' className='text-neutral-400 hover:text-sky-400'>
+                            <FaGithub size={24} />
+                        </a>
+                    </div>
                 </div>
 
             </div>

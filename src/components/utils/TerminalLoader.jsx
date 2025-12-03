@@ -5,6 +5,7 @@ const TerminalLoader = ({ onComplete }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
+  // ! COMANDOS QUE SE EJECUTAN PARA "INSTALAR" EL PORTAFOLIO
   const commands = [
     { cmd: 'pnpm install skills', delay: 1000 },
     { cmd: 'pnpm install projects', delay: 1500 },
@@ -13,6 +14,7 @@ const TerminalLoader = ({ onComplete }) => {
   ];
 
   useEffect(() => {
+    // TODO: FUNCION QUE SIMULA ESCRIBIR COMANDOS EN LA TERMINAL
     const typeCommand = (commandText, element) => {
       return new Promise(resolve => {
         let currentText = '';
@@ -40,12 +42,12 @@ const TerminalLoader = ({ onComplete }) => {
           setTimeout(async () => {
             setCurrentStep(i + 1);
             
-            // Animar el comando actual
+            // ! AQUI EJECUTO LA ANIMACION DE TYPEWRITER PARA CADA COMANDO
             const commandElement = document.querySelector(`[data-command="${i}"]`);
             if (commandElement) {
               await typeCommand(commands[i].cmd, commandElement);
               
-              // Mostrar indicador de éxito después de escribir
+              // ? MOSTRAR EL CHECKMARK DESPUES DE QUE TERMINE DE ESCRIBIR
               setTimeout(() => {
                 const successElement = document.querySelector(`[data-success="${i}"]`);
                 if (successElement) {

@@ -1,6 +1,7 @@
 import { FaGithub, FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaFigma, FaJsSquare, FaGitAlt } from 'react-icons/fa';
 import { SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 
+// TODO: TODAS MIS HABILIDADES TECNICAS CON SUS ICONOS RESPECTIVOS
 const skills = [
     { name: 'HTML5', IconComponent: FaHtml5 },
     { name: 'CSS3', IconComponent: FaCss3Alt },
