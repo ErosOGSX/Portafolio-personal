@@ -3,24 +3,31 @@ import anime from 'animejs';
 
 const AnimatedLogo = () => {
   const logoRef = useRef(null);
+  const pulseAnimationRef = useRef(null);
 
   useEffect(() => {
-    // Animación de pulso con gradiente
-    anime({
+    pulseAnimationRef.current = anime({
       targets: logoRef.current,
-      scale: [1, 1.08, 1],
+      scale: [1, 1.05, 1],
       boxShadow: [
         '0 0 0px rgba(56, 189, 248, 0)',
-        '0 0 15px rgba(56, 189, 248, 0.6)',
+        '0 0 12px rgba(56, 189, 248, 0.4)',
         '0 0 0px rgba(56, 189, 248, 0)'
       ],
-      duration: 3000,
-      easing: 'easeInOutQuad',
+      duration: 6000,
+      easing: 'easeInOutSine',
       loop: true
     });
-  }, []);
 
+    return () => {
+      if (pulseAnimationRef.current) {
+        pulseAnimationRef.current.pause();
+      }
+    };
+  }, []);
   const handleHover = () => {
+    if (!logoRef.current || !pulseAnimationRef.current) return;     
+      pulseAnimationRef.current.pause();
     anime({
       targets: logoRef.current,
       scale: [1, 1.15, 1.1],
@@ -31,7 +38,12 @@ const AnimatedLogo = () => {
         '0 0 15px rgba(56, 189, 248, 0.6)'
       ],
       duration: 600,
-      easing: 'easeOutBack(1.7)'
+      easing: 'easeOutBack(1.7)',
+      complete: () => {
+         if (pulseAnimationRef.current) {
+           pulseAnimationRef.current.restart();
+         }
+       }
     });
   };
 

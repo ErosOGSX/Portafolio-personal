@@ -35,10 +35,15 @@ const Skills = () => {
     const handleSkillHover = (index) => {
         anime({
             targets: skillsRef.current[index],
-            scale: [1, 1.1, 1.05],
-            rotate: [0, 5, 0],
-            duration: 400,
-            easing: 'easeOutElastic(1, .8)'
+            scale: [1, 1.18, 1.05],
+            rotate: [0, 8, 0],
+            boxShadow: [
+                '0 0 0px rgba(34,211,238,0)',
+                '0 0 24px rgba(34,211,238,0.7)',
+                '0 0 0px rgba(34,211,238,0)'
+            ],
+            duration: 600,
+            easing: 'easeOutElastic(1, .7)'
         });
     };
 
@@ -56,9 +61,9 @@ const Skills = () => {
                             key={skill.name} 
                             ref={el => skillsRef.current[index] = el}
                             onMouseEnter={() => handleSkillHover(index)}
-                            className='group flex flex-col items-center justify-center gap-4 rounded-lg bg-neutral-900/50 p-6 border border-neutral-800 transition-all duration-300 hover:border-sky-400/50 hover:bg-neutral-800/60 opacity-0'
+                            className='group card-tilt flex flex-col items-center justify-center gap-4 rounded-lg bg-neutral-900/50 p-6 border border-neutral-800 transition-all duration-300 hover:border-sky-400/50 hover:bg-neutral-800/60 opacity-0'
                         >
-                            <div className='text-sky-400 transition-transform duration-300 group-hover:scale-110'>
+                            <div className='text-sky-400 icon-morph transition-transform duration-300 group-hover:scale-110'>
                                 <IconComponent size={40} />
                             </div>
                             <p className='font-semibold text-neutral-300'>{skill.name}</p>

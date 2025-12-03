@@ -1,4 +1,5 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import TronLoader from './components/utils/TronLoader';
 import { useUiStore } from './store/uiStore';
 
 //? IMPORTACIONES DE DATOS
@@ -16,9 +17,17 @@ import ProjectsModal from './components/modals/ProjectsModal';
 import { NotificationToast } from './components/utils/NotificationToast'
 import Skills from './components/skills/Skills';
 import InteractiveParticles from './components/utils/InteractiveParticles';
+import TerminalLoader from './components/utils/TerminalLoader';
+import CustomCursor from './components/utils/CustomCursor';
+import AnimatedStats from './components/utils/AnimatedStats';
+import DynamicBackground from './components/utils/DynamicBackground';
+import SyntaxHighlightStatic from './components/utils/SyntaxHighlightStatic';
 
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [showTerminal, setShowTerminal] = useState(false);
+  const [appReady, setAppReady] = useState(false);
    const { isModalOpen, modalType, setActiveSection } = useUiStore();
    const projectsToShowOnPage = allProjects.slice(0, 3);
 
@@ -70,51 +79,61 @@ function App() {
    }, [setActiveSection]);
 
 
+  const handleLoaderFinish = () => {
+    setLoading(false);
+    setShowTerminal(true);
+  };
+
+  const handleTerminalComplete = () => {
+    setShowTerminal(false);
+    setAppReady(true);
+  };
+
   return (
-    <div className="bg-neutral-950 text-white relative">
-      <InteractiveParticles />
-      <div className="absolute inset-0 -z-10 h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-      
-      {/* NAVBAR SECTION */}
-
-      <Navbar />
-
-      <main className="container mx-auto px-4">
-        <div ref={heroRef} id="hero"><Hero /></div>
-        <div ref={aboutRef} id="about"><About /></div>
-        <div ref={projectsRef} id="projects">
-          <Projects projectsToShow={projectsToShowOnPage} allProjects={allProjects} />
+    <>
+      {loading && <TronLoader onFinish={handleLoaderFinish} />}
+      {showTerminal && <TerminalLoader onComplete={handleTerminalComplete} />}
+      {appReady && (
+        <div className="bg-neutral-950 text-white relative" style={{ cursor: 'none' }}>
+          <CustomCursor />
+          <DynamicBackground />
+          <InteractiveParticles />
+          <div className="absolute inset-0 -z-10 h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+          {/* NAVBAR SECTION */}
+          <Navbar />
+          <main className="container mx-auto px-4">
+            <div ref={heroRef} id="hero"><Hero /></div>
+            <div ref={aboutRef} id="about">
+              <About />
+              <div className="mt-16">
+                <AnimatedStats />
+              </div>
+              <div className="mt-16 max-w-2xl mx-auto">
+                <SyntaxHighlightStatic />
+              </div>
+            </div>
+            <div ref={projectsRef} id="projects">
+              <Projects projectsToShow={projectsToShowOnPage} allProjects={allProjects} />
+            </div>
+            {/* SKILLS SECTION */}
+            <div ref={skillsRef} id="skills">
+              <Skills />
+            </div>
+            {/* CONTACT SECTION */}
+            <AnimatedSection ref={contactRef} id="contact">
+                <h2 className='text-3xl font-bold text-center text-neutral-100 sm:text-4xl'>Contacto</h2>
+                <p className='mt-6 max-w-2xl mx-auto text-center text-lg text-neutral-300'>¿Interesado en colaborar o tienes alguna pregunta? Rellena el formulario de abajo.</p>
+                <ContactForm />
+            </AnimatedSection>
+          </main>
+          {/* FOOTER SECTION */}
+          <Footer />
+          {isModalOpen && modalType === 'projects' && <ProjectsModal />}
+          {/* NOTIFICATION */}
+          <NotificationToast />
         </div>
-        
-        {/* SKILLS SECTION */}
-
-          <div ref={skillsRef} id="skills">
-            <Skills />
-          </div>
-        
-          {/* CONTACT SECTION */}
-
-
-          <AnimatedSection ref={contactRef} id="contact">
-              <h2 className='text-3xl font-bold text-center text-neutral-100 sm:text-4xl'>Contacto</h2>
-              <p className='mt-6 max-w-2xl mx-auto text-center text-lg text-neutral-300'>¿Interesado en colaborar o tienes alguna pregunta? Rellena el formulario de abajo.</p>
-              <ContactForm />
-          </AnimatedSection>
-
-      </main>
-
-
-        {/* FOOTER SECTION */}
-      <Footer />
-
-      {isModalOpen && modalType === 'projects' && <ProjectsModal />}
-
-
-        {/* NOTIFICATION */}
-
-        <NotificationToast />
-
-    </div>
+      )}
+    </>
   );
 }
 

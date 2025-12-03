@@ -23,10 +23,9 @@ const Navbar = () => {
     return (
         <header className='sticky top-0 z-50 bg-neutral-950/50 backdrop-blur-lg'>
             <nav className='container mx-auto flex max-w-5xl items-center justify-between px-6 py-4'>
-                <a href="#hero">
+                <a href="#hero" aria-label="Ir a inicio">
                     <AnimatedLogo />
                 </a>
-
                 {/* Navegación para pantallas grandes (Desktop) */}
                 <div className='hidden md:flex items-center space-x-8'>
                     {navLinks.map((link) => (
@@ -54,7 +53,7 @@ const Navbar = () => {
 
             {/* Menú desplegable para Móvil */}
             {isMenuOpen && (
-                <div className='md:hidden bg-neutral-950'>
+                <div className='md:hidden bg-neutral-950/50 backdrop-blur-lg fixed inset-x-0 top-16 z-40 shadow-xl border-b border-neutral-800'>
                     <div className='flex flex-col items-center space-y-4 py-4'>
                         {navLinks.map((link) => (
                             <a 

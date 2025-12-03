@@ -8,10 +8,25 @@ const AnimatedSection = forwardRef(({ children, id }, ref) => {
             ref={ref}
             id={id}
             className="py-16 sm:py-20"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{
+                opacity: 0,
+                y: 80,
+                scale: 0.85,
+                rotate: -8,
+                filter: 'blur(12px)'
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                rotate: 0,
+                filter: 'blur(0px)'
+            }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: 'easeInOut'}}
+            transition={{
+                duration: 0.9,
+                ease: [0.22, 1, 0.36, 1]
+            }}
         >
             {children}
         </motion.section>

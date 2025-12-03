@@ -40,7 +40,7 @@ const ProjectsModal = () => {
             animate= {{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className='fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm'
+            className='fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-md'
             onClick={closeModal}
             >
             
@@ -49,7 +49,7 @@ const ProjectsModal = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className='relative flex flex-col w-full max-w-4xl h-[90dvh] bg-neutral-900 rounded-lg shadow-xl border border-neutral-800 p-6'
+                className='relative flex flex-col w-full max-w-4xl h-[90dvh] bg-neutral-900/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-neutral-700/50 p-6'
                 onClick={(e) => e.stopPropagation()}
                 >
                     {/* HEADER DE LOS MODALS */}

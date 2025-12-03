@@ -6,7 +6,7 @@ const ProjectsCards = ({ project }) => {
     const { image, title, description, tags, liveUrl, githubUrl} = project
 
     return (
-        <div className='group relative flex flex-col overflow-hidden rounded-lg bg-neutral-900 border border-neutral-800 shadow-lg transition-all duration-300 hover:shadow-sky-400/20 hover:-translate-y-2'>
+        <div className='group card-tilt relative flex flex-col overflow-hidden rounded-lg bg-neutral-900/80 backdrop-blur-sm border border-neutral-800 shadow-lg transition-all duration-300 hover:shadow-sky-400/20 hover:-translate-y-2'>
 
             <LazyLoadImage src={image}
             alt={title}

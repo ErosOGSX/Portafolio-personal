@@ -101,6 +101,12 @@ const InteractiveParticles = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleClick);
+      
+      // Remove all particle DOM elements
+      particlesRef.current.forEach(particle => {
+        particle.remove();
+      });
+      
       particlesRef.current = [];
     };
   }, []);
